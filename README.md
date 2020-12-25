@@ -113,3 +113,4 @@ used to kill all the running 'cmd.exe' at the background to prevent parallel cta
 
 On Linux, you don't have to worry about it even with the older versions.
 
+GitHub repository of this plugin contains the latest version.
