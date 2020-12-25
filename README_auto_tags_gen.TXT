@@ -81,7 +81,7 @@ locations, e.g. 'auto_tags_gen.txt' to "%userprofile%\vimefiles\doc", 'auto_tag_
 
 or,
 
-In Ubuntu Linux, extract and enter the directory from gnome-terminal where the Makefile is contained, type 'make'. Now copy the file 'auto_tags_gen_linux.vim' into "~/.vim/plugin" and 'libauto_tag_gen.so' into repective plugin directory.
+In Ubuntu Linux, extract and enter the directory from the terminal where the Makefile is contained, type 'make'. Now copy the file 'auto_tags_gen_linux.vim' into "~/.vim/plugin" and 'libauto_tag_gen.so' into repective plugin directory.
 
 Fire up gVim and at the Vim command-line do (windows):
 
