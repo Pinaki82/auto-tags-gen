@@ -1,28 +1,19 @@
-Plugin for creating tags with ctags
-in the current working directory of the currently opened
-buffer (file), automatically, when you save your file.
+Plugin for creating tags with ctags in the current working directory of the currently opened buffer (file), automatically, when you save your file.
 
 This plugin works with C/C++ files only.
 
-Works in the current working directory. It can include
-sub-directories as well. You can generate tags files automatically
-for easy access through Omni completions,
-and facilitate the plug-in that depends on a tags file.
+Works in the current working directory. It can include sub-directories as well. You can generate tags files automatically for easy access through Omni completions, and facilitate the plugins those that depend on a tags file.
 
-You can even create tags file in any directory without
-saving a file.
+You can even create tags file in any directory without saving a file.
 
 For example: code_complete.vim (by Mingbai),
-             echofunc.vim (by Mingbai), plugins rely on a
+             echofunc.vim (by Mingbai), plugins relies on a
              tags file in the working directory
              and the include directories added to vim's search list.
 
-All of this is specified within a simple text file based plugin script
-(auto_tags_gen.vim) with a few global variables and
-a shared library (auto_tag_gen.dll and libauto_tag_gen.so on linux).
+All of this is specified within a simple text file based plugin script (auto_tags_gen.vim) with a few global variables and a shared library (auto_tag_gen.dll and libauto_tag_gen.so on Linux).
 
-Written For Vim version 7.4. May work with older
-versions as well as the future releases also.
+Written For Vim version 7.4. May work with older versions as well as the future releases also.
 
     Tested with Vim 32-bit on Windows XP/7 32-bit, Windows 7 64-bit (vim 32-bit),
     may work with Vim 64-bit on Windows 64-bit.
@@ -30,19 +21,23 @@ versions as well as the future releases also.
 
 
 
-You must set 'nocompatible' in your _vimrc file to use this plugin. You can
-stop the plugin from being loaded by setting the
+You must set 'nocompatible' in your _vimrc file to use this plugin. You can stop the plugin from being loaded by setting the
+
 "loaded_auto_tag_generator" variable:
 
 	:let loaded_auto_tag_generator = 0
-in your vimrc file.
+
+in your 'vimrc' file.
 
 Version 0.00.07-win32 can load option no. at vimstartup.
 You can do this by putting option no. 0/1/2/3/4 like:
+
  :let g:startuptrigger = 1
+ 
 in your vimrc file.
 
 You can also put these lines for your convenience:
+
 
 filetype on
 filetype plugin on
@@ -56,76 +51,63 @@ Installation:
 Download Exuberant ctags from
  http://ctags.sourceforge.net.
 Put ctags.exe into C:\WINDOWS\system32 (for Windows XP only)
-or, create a folder for ctags and finally add this folder to path, by
-r-clicking at My Computer -> Properties -> Advanced -> Environment Variables
--> System Variables -> Path. (XP)
+
+or, create a folder for ctags and finally add this folder to path, by r-clicking at My Computer -> Properties -> Advanced -> Environment Variables -> System Variables -> Path. (XP)
+
 or,
-r-clicking at Computer -> Advanced System Settings -> System Properties
+r-clicking at Computer -> Advanced System Settings
+-> System Properties
 -> Advanced tab -> Environment Variables
 -> System Variables -> Path. (Win7)
 
-But I recommend to put this stuff into system32 instead of cluttering up
-the System Path, if you are using XP, otherwise follow the second method (for Win7).
+or,
 
-Ubuntu users should download ctags from the software centre or via synaptic package manager.
+r-clicking at "This PC" -> Advanced System Settings
+-> System Properties
+-> Advanced tab -> Environment Variables
+-> System Variables -> Path. (Win10)
 
-Using 7-zip extract "auto_tag_gen_v0.00.05win32.7z" to any location
+Ubuntu users should download ctags from the repository.
+
+Download the code in a ZIP achieve from the main branch and extract the file "auto-tags-gen-main.zip" to any location
 of your preference. This contains source code for the shared library and the
-makefiles for different targets and compilers, plus "auto_tag_gen.zip".
+makefiles for different targets and compilers.
 
-At this time it supports 3 compilers on Windows:- mingw, tiny C, Visual Studio.
-This project relies on bakefile (http://www.bakefile.org). The project also includes
-bakefile scripts. If you want to create your own makefile then you can also
-use it but its not required to build the project,
-since it already includes the makefiles required to build.
-The makefiles have been created using bakefile.
+At this time, it supports 3 compilers on Windows:- MinGW, tiny C, Visual Studio.
+This project relies on bakefile (http://www.bakefile.org). The project also includes bakefile scripts. If you want to create your own makefile then you can also use it but it is not required to build the project, since it already contains the required makefiles. The makefiles have been created using bakefile.
 
-Extract "auto_tag_gen.zip" and put the stuffs in their respective
-locations, e.g. 'auto_tags_gen.txt' to C:\Program Files\vim\vim73\doc
-'auto_tag_gen.dll' and 'auto_tags_gen.vim' to
-C:\Program Files\vim\vim73\plugin
+Extract "auto_tag_gen.zip" and put the fiiles in their respective
+locations, e.g. 'auto_tags_gen.txt' to "%userprofile%\vimefiles\doc", 'auto_tag_gen.dll' and 'auto_tags_gen.vim' to "%userprofile%\vimefiles\plugin"
 
 or,
 
-In ubuntu linux,
-extract and enter the directory from gnome-terminal where the Makefile is contained,
-type
-sudo make install
-Now copy the 'auto_tags_gen_linux.vim' into ~/.vim/plugin
+In Ubuntu Linux,
+extract and enter the directory from gnome-terminal where the Makefile is contained, type `make install`
+Now copy the 'auto_tags_gen_linux.vim' into "~/.vim/plugin"
 
-Fire-up gVim and at the Vim command-line do (windows):
+Fire up gVim and at the Vim command-line do (windows):
+
 :helptags $VIMRUNTIME/doc
+
 then,
+
 :h auto_tags_gen
 
-or, in ubuntu linux,
+or, in Ubuntu Linux,
+
 :helptags $HOME/.vim/doc
 
-Read the documentations carefully.
+Read the documentation carefully.
 
-NOTE:: (Improvement):: From Version 0.0.06 this plugin no more kills any other
-console window on Microsoft Windows Operating Systems. It kills only previously
-running ctags.exe processes just to ensure you have the latest updated tags.
+NOTE:: (Improvement):: From Version 0.0.06, this plugin no more kills any other
+console window on Microsoft Windows Operating Systems. It kills only the previously running ctags.exe processes just to ensure you have the latest updated tags.
 You can now run any other command-line jobs such as compilation etc.
-Nothing will be harmed.
+The cmd.exe won't be terminated. Nothing will be harmed.
 
 CAUTION:: On Windows, older version of this plugin (prior to Version 0.0.06)
-used to kill all the running 'cmd.exe' at the background
-to prevent running several ctags process targeting the same 'tags'.
-This had some obvious advantages but a precaution is necessary.
-Means if you are doing very important tasks via 'cmd.exe' such as compiling etc.,
-then do not use any older version prior to 0.0.06, as it would interrupt your
-task by killing it midway.
-This plugin does not work with console version of vim,
-and you should not try to integrate any older version with the console version
-of vim as it would kill the vim itself by killing the 'cmd.exe'.
-Only use GVim. Better use version 0.0.06 or any future release.
+used to kill all the running 'cmd.exe' at the background to prevent parallel ctags processes targeting the same 'tags'. This had some obvious advantages but a precaution is necessary. Means if you want to do other tasks which depend on the command-line via 'cmd.exe' such as compilation etc., then do not use any older version before 0.0.06, as it would interrupt your task by killing it midway. Older versions do not work with the console version of Vim, and you should not try to integrate any older version with the console version of Vim as it would kill Vim itself by killing the 'cmd.exe'. Only use GVim. Better use version 0.0.06 when you already have the option to upgrade.
 
-On linux you don't have to worry about it even with the older versions.
+On Linux, you don't have to worry about it even with the older versions.
 
 
-
-
-
-
-
+GitHub repository of this plugin contains the latest codebase.
