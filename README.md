@@ -19,17 +19,23 @@ All of this is specified within a simple text file based plugin script (auto_tag
 
 Written For Vim version 7.4. May work with older versions as well as the future releases also.
 
+---
+
+**EDIT (August 23, 2021):** On MS Windows, the `/plugin` folder contains a 64-bit DLL. Go up one directory level and find the 32-bit one. Rename the file to `auto_tag_gen.dll` and copy it to to the `/plugin` directory if you are using 32-bit Vim.
+
+On Linux, use the distributed `libauto_tag_gen.so` on a 64-bit Linux distro, or compile it yourself (`$ make`) if you are on a 32-bit Linux system. The shared library has been compiled on Xubuntu 20.04.2 using GCC as the compiler.
+
+---
+
     Tested with Vim 32-bit on Windows XP/7 32-bit, Windows 7 64-bit (vim 32-bit),
     may work with Vim 64-bit on Windows 64-bit.
     Now it works on Linux. Tested in ubuntu 13.04 (Gvim from its repository).
-
-
 
 You must set 'nocompatible' in your _vimrc file to use this plugin. You can stop the plugin from being loaded by setting the
 
 `"loaded_auto_tag_generator"` variable:
 
-	`:let loaded_auto_tag_generator = 0`
+    `:let loaded_auto_tag_generator = 0`
 
 in your `vimrc` file.
 
@@ -37,7 +43,7 @@ Version 0.00.07-win32 can load option no. at vimstartup.
 You can do this by putting option no. 0/1/2/3/4 like:
 
  `:let g:startuptrigger = 1`
- 
+
 in your `vimrc` file.
 
 You can also put these lines for your convenience:
